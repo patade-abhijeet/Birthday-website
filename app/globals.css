@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #FFF0F4;
+  --bg-secondary: #FFF7FA;
+  --primary-pink: #F0447E;
+  --deep-pink: #D92F68;
+  --soft-rose: #F7B6CA;
+  --text-main: #49303A;
+  --text-secondary: #896F7A;
+  --border-pink: #F5CAD8;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FFF0F4;
+  color: #49303A;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: #FFF0F4;
+}
+
+/* Romantic blush selection */
+::selection {
+  background-color: #F7B6CA;
+  color: #49303A;
+}
+
+/* Custom soft pink scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF0F4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #F7B6CA;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F0447E;
+}
+
+/* Crisp romantic photograph card */
+.photo-card {
+  background: #FFFFFF;
+  border: 1px solid #F5CAD8;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px -3px rgba(240, 68, 126, 0.08), 0 2px 6px rgba(73, 48, 58, 0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #F0447E;
+  box-shadow: 0 16px 30px -4px rgba(240, 68, 126, 0.2), 0 4px 10px rgba(73, 48, 58, 0.06);
+}
+
+/* Washi tape accent */
+.washi-tape-blush {
+  position: absolute;
+  height: 18px;
+  width: 64px;
+  background-color: rgba(247, 182, 202, 0.65);
+  backdrop-filter: blur(2px);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(73, 48, 58, 0.12);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Letter Stationery paper texture */
+.stationery-letter {
+  background-color: #FFF7FA;
+  border: 1px solid #F5CAD8;
+  box-shadow: 0 20px 40px -8px rgba(240, 68, 126, 0.12), 0 2px 8px rgba(73, 48, 58, 0.05);
+}
+
+/* Marquee Row Pause on Hover */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+/* Rising Hearts Animation (Bottom to Top) */
+@keyframes floatHeartAscend {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--target-opacity, 0.55);
+  }
+  85% {
+    opacity: var(--target-opacity, 0.55);
+  }
+  100% {
+    transform: translate3d(var(--drift, 25px), -115vh, 0) rotate(var(--rot, 15deg)) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  will-change: transform, opacity;
+  animation-name: floatHeartAscend;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+  }
+
+  .floating-heart {
+    display: none !important;
+  }
+}
